@@ -8,6 +8,7 @@ __pycache__/
 
 sample_*
 .vscode
+output.pdf
 # Distribution / packaging
 .Python
 build/
