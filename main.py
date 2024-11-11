@@ -23,10 +23,12 @@ if uploaded_file:
     with st.spinner("Extracting and processing PDF..."):
         hash_value = get_hash(uploaded_file)
         vectordb = VectorDB(uploaded_file=uploaded_file)
+        logger_st.info("PDF data vectorized")
         st.info("Data loaded successfully")
         query = st.text_input("Ask your Query")
         summary_btn = st.button("Get Summary", type='primary')
         if summary_btn:
             knn = vectordb.get_knn(query)
             response = get_summary(model, knn)
+            logger_st.info("Summary loaded successfully")
             st.write(response)
