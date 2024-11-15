@@ -29,6 +29,6 @@ if uploaded_file:
         summary_btn = st.button("Get Summary", type='primary')
         if summary_btn:
             knn = vectordb.get_knn(query)
-            response = get_summary(model, knn)
+            response = get_summary(model, knn, query)
             logger_st.info("Summary loaded successfully")
             st.write(response)

@@ -1,5 +1,5 @@
 
-def get_summary(model, knn):
+def get_summary(model, knn, query):
     prompt = """You are a summarizer. I have provided the details about the commodity,
     and I will perform a similarity search to retrieve relevant results. Based on the
     similarity results, please provide a clear and concise summary for each commodity class,
@@ -9,8 +9,11 @@ def get_summary(model, knn):
     Here are the similarity search results:
     {results}
 
-    Please process the information and give a refined summary for each commodity,
-    ensuring that unnecessary details are excluded, and the summary is easy to understand.
-    """.format(results=knn)
+    Here is my question based on summary {query},
+    
+    Please process the information and give a refined data for each commodity,
+    ensuring that unnecessary details are excluded.
+    
+    """.format(results=knn, query=query)
     response = model.generate_content(prompt)
     return response.text
